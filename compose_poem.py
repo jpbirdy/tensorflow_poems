@@ -83,12 +83,12 @@ def gen_poem(begin_word):
 
 
 def pretty_print_poem(poem_):
-    poem_sentences = poem_.split('。')
+    poem_sentences = poem_.split(u'。')
     for s in poem_sentences:
         if s != '' and len(s) > 10:
-            print(s + '。')
+            print(s + u'。')
 
 if __name__ == '__main__':
-    begin_char = input('## please input the first character:')
+    begin_char = u'程'
     poem = gen_poem(begin_char)
     pretty_print_poem(poem_=poem)

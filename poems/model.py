@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 # file: model.py
 # author: JinTian
 # time: 07/03/2017 3:07 PM
@@ -34,6 +34,7 @@ def rnn_model(model, input_data, output_data, vocab_size, rnn_size=128, num_laye
     :param learning_rate:
     :return:
     """
+    global cell_fun
     end_points = {}
 
     if model == 'rnn':
@@ -43,8 +44,8 @@ def rnn_model(model, input_data, output_data, vocab_size, rnn_size=128, num_laye
     elif model == 'lstm':
         cell_fun = tf.contrib.rnn.BasicLSTMCell
 
-    cell = cell_fun(rnn_size, state_is_tuple=True)
-    cell = tf.contrib.rnn.MultiRNNCell([cell] * num_layers, state_is_tuple=True)
+    cell = cell_fun(rnn_size, state_is_tuple=False)
+    cell = tf.contrib.rnn.MultiRNNCell([cell] * num_layers, state_is_tuple=False)
 
     if output_data is not None:
         initial_state = cell.zero_state(batch_size, tf.float32)

@@ -28,12 +28,12 @@ end_token = 'E'
 def process_poems(file_name):
     # 诗集
     poems = []
-    with open(file_name, "r", encoding='utf-8', ) as f:
+    with open(file_name, "r") as f:
         for line in f.readlines():
             try:
-                title, content = line.strip().split(':')
-                content = content.replace(' ', '')
-                if '_' in content or '(' in content or '（' in content or '《' in content or '[' in content or \
+                title, content = line.strip().decode('utf8').split(u':')
+                content = content.replace(u' ', u'')
+                if u'_' in content or u'(' in content or u'（' in content or u'《' in content or u'[' in content or \
                         start_token in content or end_token in content:
                     continue
                 if len(content) < 5 or len(content) > 79:
